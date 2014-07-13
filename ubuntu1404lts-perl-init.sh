@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+aptitude update -y
 
 #aptitude update
 aptitude install -y build-essential
@@ -78,6 +79,19 @@ cpanm Moose
 # GRANT ALL PRIVILEGES ON cataldb.* TO 'cataluser'@'localhost' IDENTIFIED BY 'catalpass';
 # create database cataldb;
 
+
+# # vim install
+# mkdir -p ~/.vim
+# cd ~/.vim
+# git clone git://github.com/gmarik/vundle.git vundle
+#  
+# mkdir ~/Settings
+# cd ~/Settings
+# git clone git@github.com:ktotoron/PerlSettings.git
+# ln -s ~/Settings/PerlSettings/.vimrc ~/.vimrc
+# vim :BundleInstall
+
+# 
 
 
 
