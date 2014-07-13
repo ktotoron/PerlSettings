@@ -19,44 +19,12 @@ echo "mysql-server mysql-server/root_password_again password root" | debconf-set
 aptitude install -y mysql-server
 aptitude install -y mysql-client
 aptitude install -y zsh
-chsh -s /usr/bin/zsh vagrant
-mv ~/.zshrc ~/.zshrc.orig
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-
 # for DBD
 aptitude install -y libmysqlclient-dev
 
 
-
-# vim
-aptitude install -y vim
-# vim setting
-mkdir ~/GitSettings
-cd ~/GitSettings
-git clone https://github.com/ktotoron/PerlSettings.git
-cd ~
-ln -s ~/GitSettings/PerlSettings/.vimrc ~/.vimrc
-
-mkdir ~/.vim
-cd ~/.vim
-git clone git://github.com/gmarik/vundle.git vundle
-cd ~
-
-# vim command
-vim +":BundleInstall" +:q
-
-
-
-
-#    # --------------------user--------------------
-#    # user add
-#    groupadd perl_dev
-#    useradd -m -G perl_dev -p `echo 'test' | mkpasswd -s -m sha-512` totoron_perl
-#    
-#    # perl
-#    su -l totoron_perl
-#    # --------------------user--------------------
+# su
+su -l vagrant
 
 #perlbrew setting 
 perlbrew init
