@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 aptitude update -y
+aptitude upgrade -y
+
 
 #aptitude update
 aptitude install -y build-essential
 aptitude install -y git
 aptitude install -y vim
+aptitude install -y perl
 aptitude install -y perlbrew
 aptitude install -y cpanminus
 aptitude install -y perl-doc
@@ -22,7 +25,21 @@ aptitude install -y mysql-client
 aptitude install -y zsh
 # for DBD
 aptitude install -y libmysqlclient-dev
+# for XML::Parser
+aptitude install -y libexpat1-dev
+# for YAML
+aptitude install -y libyaml
 
+
+#perlbrew setting 
+perlbrew init
+echo 'source ~/.perlbrew/etc/bashrc' >> ~/.bashrc
+source ~/.bashrc
+perlbrew install perl-5.10.1
+perlbrew install-cpanm
+cpanm local::lib
+
+cpanm --self-upgrade
 
 # su
 su -l vagrant
@@ -31,13 +48,16 @@ su -l vagrant
 perlbrew init
 echo 'source ~/.perlbrew/etc/bashrc' >> ~/.bashrc
 source ~/.bashrc
+perlbrew install perl-5.10.1
 perlbrew install-cpanm
+perlbrew use perl-5.10.1
 
 
 # catalyst
+cpanm --self-upgrade
 cpanm local::lib
 
-cpanm YAML
+cpanm --force YAML
 cpanm Catalyst::Runtime
 cpanm Catalyst::Devel
 
@@ -72,6 +92,7 @@ cpanm --force XML::Simple
 cpanm Test::Base
 cpanm Test::Pod::Coverage
 cpanm Moose
+cpanm DBIx::Class::Schema::Loader
 
 
 
