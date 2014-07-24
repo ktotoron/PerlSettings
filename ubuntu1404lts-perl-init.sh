@@ -6,12 +6,14 @@ aptitude upgrade -y
 
 #aptitude update
 aptitude install -y build-essential
+aptitude install -y language-pack-ja
 aptitude install -y git
 aptitude install -y vim
 aptitude install -y perl
 aptitude install -y perlbrew
 aptitude install -y cpanminus
 aptitude install -y perl-doc
+aptitude install -y curl
 apt-get -y install debconf-utils
 # makepasswd
 aptitude install -y whois
@@ -31,69 +33,59 @@ aptitude install -y libexpat1-dev
 aptitude install -y libyaml
 
 
-#perlbrew setting 
-perlbrew init
-echo 'source ~/.perlbrew/etc/bashrc' >> ~/.bashrc
-source ~/.bashrc
-perlbrew install perl-5.10.1
-perlbrew install-cpanm
-cpanm local::lib
-
-cpanm --self-upgrade
-
-# su
-su -l vagrant
-
-#perlbrew setting 
-perlbrew init
-echo 'source ~/.perlbrew/etc/bashrc' >> ~/.bashrc
-source ~/.bashrc
-perlbrew install perl-5.10.1
-perlbrew install-cpanm
-perlbrew use perl-5.10.1
 
 
-# catalyst
-cpanm --self-upgrade
-cpanm local::lib
-
-cpanm --force YAML
-cpanm Catalyst::Runtime
-cpanm Catalyst::Devel
-
-cpanm Catalyst::View::TT
-cpanm --force Catalyst::View::JSON
-
-cpanm Catalyst::Model::DBIC::Schema
-ln -s /usr/bin/mysql_config /usr/local/bin/mysql_config
-cpanm --force DBD::mysql
-cpanm DateTime::Format::MySQL
-cpanm Catalyst::Model::DBI
-cpanm Catalyst::Model::Adaptor
-cpanm DBIx::Class::Cursor::Cached
-
-cpanm Catalyst::Plugin::Session
-cpanm Catalyst::Plugin::Session::State::Cookie
-cpanm Catalyst::Plugin::Session::Store::File
-cpanm Catalyst::Plugin::Authentication
-cpanm Catalyst::Authentication::Store::DBIx::Class
-cpanm Catalyst::Plugin::Authorization::Roles
-cpanm Catalyst::Plugin::FormValidator::Simple
-cpanm Catalyst::Plugin::FormValidator::Simple::Auto
-cpanm --force FormValidator::Simple::Plugin::Japanese
-cpanm Catalyst::Plugin::Cache
-cpanm Catalyst::Plugin::PageCache
-cpanm Catalyst::Plugin::I18N
-
-cpanm Catalyst::Controller::ActionRole
-cpanm --force XML::SAX::Expat
-cpanm --force XML::Parser
-cpanm --force XML::Simple
-cpanm Test::Base
-cpanm Test::Pod::Coverage
-cpanm Moose
-cpanm DBIx::Class::Schema::Loader
-
+## #perlbrew setting 
+## perlbrew init
+## echo 'source ~/.perlbrew/etc/bashrc' >> ~/.bashrc
+## source ~/.bashrc
+## perlbrew install perl-5.10.1
+## perlbrew use perl-5.10.1
+## cpanm --self-upgrade
+## 
+## # catalyst
+## cpanm --self-upgrade
+## cpanm local::lib
+## cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+## 
+## cpanm --force YAML
+## cpanm Catalyst::Runtime
+## cpanm Catalyst::Devel
+## 
+## cpanm Catalyst::View::TT
+## cpanm --force Catalyst::View::JSON
+## 
+## cpanm Catalyst::Model::DBIC::Schema
+## ln -s /usr/bin/mysql_config /usr/local/bin/mysql_config
+## cpanm --force DBD::mysql
+## cpanm DateTime::Format::MySQL
+## cpanm Catalyst::Model::DBI
+## cpanm Catalyst::Model::Adaptor
+## cpanm DBIx::Class::Cursor::Cached
+## 
+## cpanm Catalyst::Plugin::Session
+## cpanm Catalyst::Plugin::Session::State::Cookie
+## cpanm Catalyst::Plugin::Session::Store::File
+## cpanm Catalyst::Plugin::Authentication
+## cpanm Catalyst::Authentication::Store::DBIx::Class
+## cpanm Catalyst::Plugin::Authorization::Roles
+## cpanm Catalyst::Plugin::FormValidator::Simple
+## cpanm Catalyst::Plugin::FormValidator::Simple::Auto
+## cpanm --force FormValidator::Simple::Plugin::Japanese
+## cpanm Catalyst::Plugin::Cache
+## cpanm Catalyst::Plugin::PageCache
+## cpanm Catalyst::Plugin::I18N
+## 
+## cpanm Catalyst::Controller::ActionRole
+## cpanm --force XML::SAX::Expat
+## cpanm --force XML::Parser
+## cpanm --force XML::Simple
+## cpanm Test::Base
+## cpanm Test::Pod::Coverage
+## cpanm Moose
+## cpanm MooseX
+## cpanm DBIx::Class::Schema::Loader
+## cpanm MooseX::NonMoose
 
 
 # MySQL
@@ -112,7 +104,8 @@ cpanm DBIx::Class::Schema::Loader
 # ln -s ~/Settings/PerlSettings/.vimrc ~/.vimrc
 # vim :BundleInstall
 
-# 
+# install oh-my-zsh
+# wget http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
 
 
